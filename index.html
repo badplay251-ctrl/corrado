@@ -206,9 +206,104 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:.01ms!important;}
   }
+  /* ===== RPG UI ===== */
+  .hidden{display:none!important;}
+  .login{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 30%,var(--bg2),#0d0820 75%);padding:20px;}
+  .login.open{display:flex;}
+  .lbox{text-align:center;max-width:340px;width:100%;}
+  .lbox .logo{font-size:60px;animation:bob 2s ease-in-out infinite;}
+  .lbox h2{font-family:'Bungee',cursive;color:var(--yellow);font-size:30px;margin:6px 0;text-shadow:3px 3px 0 var(--hot);}
+  .lbox p{opacity:.85;margin-bottom:14px;}
+  .lbox input{width:100%;padding:14px;border-radius:14px;border:3px solid var(--cyan);
+    background:rgba(0,0,0,.35);color:#fff;font-size:18px;font-weight:900;text-align:center;outline:none;}
+  .lbox small{display:block;margin-top:12px;opacity:.6;font-size:12px;}
+  .ctrl.big{width:100%;margin-top:14px;font-size:18px;padding:14px;}
+  .pbar{width:100%;max-width:560px;margin:8px auto 0;padding:0 16px;display:flex;gap:12px;align-items:center;}
+  .pbar .pw{font-size:30px;background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.12);
+    border-radius:14px;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .pmid{flex:1;min-width:0;}
+  .prow{display:flex;align-items:center;gap:10px;font-weight:900;}
+  .prow b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46%;}
+  .prow .lv{color:var(--cyan);} .prow .lv i,.prow .coins i{font-style:normal;}
+  .prow .coins{margin-left:auto;color:var(--yellow);white-space:nowrap;}
+  .expbar{position:relative;height:16px;background:rgba(0,0,0,.35);border-radius:10px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);margin-top:4px;}
+  .expbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),#7ef0ff);transition:width .2s;}
+  .expbar > span{position:absolute;inset:0;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+  .boostchips{width:100%;max-width:560px;margin:6px auto 0;padding:0 16px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+  .chip{background:rgba(255,210,63,.18);border:1px solid var(--yellow);color:var(--yellow);border-radius:20px;padding:3px 10px;font-size:12px;font-weight:900;}
+  .box.wide{max-width:470px;width:100%;max-height:84vh;overflow:auto;}
+  .box.wide h2{display:flex;align-items:center;gap:8px;}
+  .coinbig{margin-left:auto;font-size:18px;color:var(--yellow);} .coinbig i{font-style:normal;}
+  .tabs{display:flex;gap:8px;margin:6px 0 12px;}
+  .tab{flex:1;padding:9px;border:none;border-radius:12px;font-weight:900;cursor:pointer;background:rgba(255,255,255,.1);color:#fff;}
+  .tab.on{background:var(--cyan);color:#10233a;}
+  .shoplist{display:flex;flex-direction:column;gap:8px;text-align:left;}
+  .shop-row{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px 10px;}
+  .shop-row .si{font-size:26px;flex:0 0 auto;width:38px;text-align:center;}
+  .shop-row .sinfo{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .shop-row .sinfo b{font-size:14px;} .shop-row .sinfo small{opacity:.75;font-size:11px;line-height:1.3;}
+  .shop-row .ctrl{padding:8px 12px;font-size:13px;flex:0 0 auto;}
+  .obj-row{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:9px 12px;text-align:left;}
+  .obj-row.done{border-color:var(--good);background:rgba(46,204,113,.12);}
+  .obj-row b{font-size:14px;} .obj-row small{opacity:.75;font-size:11px;display:block;}
+  .obar{height:9px;background:rgba(0,0,0,.4);border-radius:6px;overflow:hidden;margin:5px 0;}
+  .obar > i{display:block;height:100%;background:linear-gradient(90deg,var(--hot),var(--yellow));}
+  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(30px);z-index:60;
+    background:#fff;color:#1a1033;border:3px solid #1a1033;border-radius:16px;padding:10px 18px;text-align:center;
+    opacity:0;pointer-events:none;box-shadow:0 8px 0 rgba(0,0,0,.25);min-width:160px;}
+  .toast.show{animation:toast 2.2s ease forwards;}
+  .toast .tt{font-weight:900;font-size:15px;} .toast .ts{font-weight:900;color:var(--hot);font-size:13px;}
+  @keyframes toast{0%{opacity:0;transform:translateX(-50%) translateY(30px);}12%{opacity:1;transform:translateX(-50%) translateY(0);}88%{opacity:1;}100%{opacity:0;transform:translateX(-50%) translateY(-10px);}}
+  /* braccio che cala l'arma su Corrado */
+  .swing{position:absolute;z-index:7;pointer-events:none;transform-origin:50% 50%;
+    animation:swing .52s cubic-bezier(.2,1.3,.4,1) forwards;}
+  @keyframes swing{
+    0%{opacity:0;transform:translate(-50%,-50%) rotate(-62deg) scale(.55);}
+    30%{opacity:1;transform:translate(-50%,-50%) rotate(12deg) scale(1.15);}
+    48%{transform:translate(-50%,-50%) rotate(-3deg) scale(1.05);}
+    100%{opacity:0;transform:translate(-50%,-50%) rotate(-24deg) scale(.9);}
+  }
+  /* barra abilità */
+  .skills{width:100%;max-width:560px;margin:8px auto 0;padding:0 16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  .skill{position:relative;width:58px;height:58px;border-radius:14px;border:2px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.3);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+  .skill .ic{font-size:22px;line-height:1;}
+  .skill .nm{font-size:8px;font-weight:900;opacity:.85;margin-top:2px;text-transform:uppercase;letter-spacing:.4px;}
+  .skill.ready{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,229,255,.35);}
+  .skill.locked{opacity:.55;cursor:default;}
+  .skill .lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,0,0,.5);}
+  .skill .lock i{font-style:normal;font-size:8px;position:absolute;bottom:3px;width:100%;text-align:center;}
+  .skill .cd{position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.62);color:#fff;font-weight:900;
+    font-size:14px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;}
+  .skill:active{transform:scale(.94);}
+  .stage.flash::after{content:"";position:absolute;inset:0;background:#fff;opacity:.45;pointer-events:none;z-index:9;animation:flashfx .3s ease-out forwards;}
+  @keyframes flashfx{to{opacity:0;}}
+  /* numeri guadagnati che volano */
+  .gain{position:absolute;z-index:8;pointer-events:none;transform:translate(-50%,-50%);
+    display:flex;flex-direction:column;align-items:center;gap:1px;font-weight:900;animation:gain .75s ease-out forwards;}
+  .gain .ge{color:var(--cyan);font-size:14px;text-shadow:1px 1px 0 #10233a;}
+  .gain .gc{color:var(--yellow);font-size:13px;text-shadow:1px 1px 0 #5a4400;}
+  @keyframes gain{0%{opacity:0;transform:translate(-50%,-40%) scale(.7);}
+    20%{opacity:1;transform:translate(-50%,-65%) scale(1);}
+    100%{opacity:0;transform:translate(-50%,-175%) scale(1);}}
 </style>
 </head>
 <body>
+
+<!-- LOGIN -->
+<div class="login open" id="loginOverlay">
+  <div class="lbox">
+    <div class="logo">🥊</div>
+    <h2>PUGNI A CORRADO</h2>
+    <p>Inserisci il tuo nome per iniziare</p>
+    <input id="nameInput" maxlength="16" placeholder="Il tuo nome" autocomplete="off">
+    <button class="ctrl big" id="loginBtn">ENTRA 👊</button>
+    <small>I progressi si salvano in questo browser.</small>
+  </div>
+</div>
+<div class="toast" id="toast"><div class="tt"></div><div class="ts"></div></div>
 
 <header>
   <h1>PUGNI A CORRADO</h1>
@@ -218,6 +313,15 @@
     <div class="card best"><div class="lbl">Record</div><div class="val" id="best">0</div></div>
   </div>
 </header>
+
+<div class="pbar" id="pbar">
+  <div class="pw" id="pWeapon">🤜</div>
+  <div class="pmid">
+    <div class="prow"><b id="pName">—</b><span class="lv">Lv <i id="pLevel">1</i></span><span class="coins">🪙 <i id="pCoins">0</i></span></div>
+    <div class="expbar"><i id="expBar" style="width:0"></i><span id="expTxt">0 / 0</span></div>
+  </div>
+</div>
+<div class="boostchips" id="boostChips"></div>
 
 <div class="meters">
   <div class="bar-wrap">
@@ -229,6 +333,8 @@
     <div class="bar"><i id="loveBar" style="width:0"></i></div>
   </div>
 </div>
+
+<div class="skills" id="skills"></div>
 
 <div class="stage" id="stage">
   <div class="ring"></div>
@@ -311,11 +417,15 @@
 
 <footer>
   <button class="ctrl" id="hugBtn">Abbraccia 🤗</button>
-  <button class="ctrl alt" id="motoBtn">Tocca la moto 🏍️</button>
-  <button class="ctrl alt" id="sheetBtn">Scheda di Corrado</button>
+  <button class="ctrl alt" id="shopBtn">Negozio 🛒</button>
+  <button class="ctrl alt" id="objBtn">Obiettivi 🎯</button>
+  <button class="ctrl alt" id="invBtn">Zaino 🎒</button>
+  <button class="ctrl alt" id="motoBtn">Moto 🏍️</button>
+  <button class="ctrl alt" id="sheetBtn">Corrado 🪪</button>
   <button class="ctrl alt" id="soundBtn">🔊 Audio</button>
   <button class="ctrl" id="resetBtn">Reset</button>
-  <div class="hint">Tocca Corrado per un pugno 🥊 · tocca la sua moto 🏍️ per farlo impazzire di gelosia · riempi il TVB 💖 per fare pace</div>
+  <button class="ctrl" id="logoutBtn">Cambia 🔁</button>
+  <div class="hint">Colpisci Corrado per guadagnare EXP e 🪙 · compra armi e bonus al Negozio · completa gli Obiettivi · tocca la moto 🏍️ per la gelosia</div>
 </footer>
 
 <!-- scheda -->
@@ -334,6 +444,35 @@
       <li>Stato: <b>ti vuole bene</b> 💖</li>
     </ul>
     <button class="ctrl" id="closeSheet" style="margin-top:16px;width:100%">Chiudi</button>
+  </div>
+</div>
+
+<!-- NEGOZIO -->
+<div class="sheet" id="shopModal">
+  <div class="box wide">
+    <h2>🛒 Negozio <span class="coinbig">🪙 <i id="shopCoins">0</i></span></h2>
+    <div class="tabs"><button class="tab on" data-tab="w">⚔️ Armi</button><button class="tab" data-tab="i">✨ Bonus</button></div>
+    <div id="tabW"><div class="shoplist" id="shopWeapons"></div></div>
+    <div id="tabI" class="hidden"><div class="shoplist" id="shopItems"></div></div>
+    <button class="ctrl" data-close style="margin-top:14px;width:100%">Chiudi</button>
+  </div>
+</div>
+
+<!-- OBIETTIVI -->
+<div class="sheet" id="objModal">
+  <div class="box wide">
+    <h2>🎯 Obiettivi</h2>
+    <div class="shoplist" id="objList"></div>
+    <button class="ctrl" data-close style="margin-top:14px;width:100%">Chiudi</button>
+  </div>
+</div>
+
+<!-- ZAINO -->
+<div class="sheet" id="invModal">
+  <div class="box wide">
+    <h2>🎒 Zaino</h2>
+    <div class="shoplist" id="invList"></div>
+    <button class="ctrl" data-close style="margin-top:14px;width:100%">Chiudi</button>
   </div>
 </div>
 
@@ -579,15 +718,15 @@
     hitHead(x-hcx, y-hcy);
 
     const now=Date.now();
-    if(now-lastPunch<700){ combo=Math.min(combo+1,99); }
+    if(now-lastPunch<700 || boostOn('combolock')){ combo=Math.min(combo+1,99); }
     else { combo=1; }
     lastPunch=now;
     clearTimeout(comboTimer);
-    comboTimer=setTimeout(()=>{ combo=1; update(); },800);
+    comboTimer=setTimeout(()=>{ if(!boostOn('combolock')){ combo=1; update(); } },800);
 
     score+=combo;
     if(score>best) best=score;
-    hp-=4+combo*0.4;
+    hp-=(4+combo*0.4)*(profile?(1+(weaponOf().dmg-1)*0.12):1);
     love=Math.min(100,love+2.2);
 
     yell();
@@ -602,6 +741,7 @@
     else { if(Math.random()<0.3) say(ouch[(Math.random()*ouch.length)|0]); }
 
     if(love>=100){ hug(); }
+    rpgPunch(x,y);
     updateDizzy();
     update();
   }
@@ -622,6 +762,7 @@
       stage.appendChild(h); setTimeout(()=>h.remove(),1500);
     }
     hp=100; love=0;
+    rpgEvent('hug');
     setTimeout(()=>{ busy=false; setFace(); },1200);
     update();
   }
@@ -666,6 +807,7 @@
       stage.appendChild(s); setTimeout(()=>s.remove(),620);
     }
     love=Math.max(0,love-6); // toccargli la moto lo offende: TVB giù
+    rpgEvent('jealousy');
     clearTimeout(jealT);
     jealT=setTimeout(()=>{ busy=false; corrado.classList.remove('mad'); setFace(); },1500);
     update();
@@ -722,6 +864,298 @@
     if(Date.now()-lastPunch>600 && hp<100){ hp=Math.min(100,hp+1.2); setFace(); update(); }
     updateDizzy();
   },220);
+
+  // ================= SISTEMA RPG =================
+  const WEAPONS=[
+    {id:'fist',name:'Pugni nudi',icon:'🤜',dmg:1,exp:1,price:0,desc:'Le mani che ti ha dato mamma'},
+    {id:'glove',name:'Guantoni',icon:'🥊',dmg:2,exp:1.2,price:60,desc:'Colpi più sodi'},
+    {id:'bat',name:'Mazza da baseball',icon:'🏏',dmg:4,exp:1.5,price:250,desc:'TUNF assicurato'},
+    {id:'pan',name:'Padella',icon:'🍳',dmg:6,exp:1.8,price:550,desc:'DONG!'},
+    {id:'hammer',name:'Martellone',icon:'🔨',dmg:9,exp:2.2,price:1300,desc:'Sfonda tutto'},
+    {id:'sword',name:'Spada',icon:'⚔️',dmg:14,exp:2.7,price:3200,desc:'Affilatissima'},
+    {id:'bolt',name:'Pugno elettrico',icon:'⚡',dmg:22,exp:3.4,price:7500,desc:'Zap!'},
+    {id:'rocket',name:'Razzo',icon:'🚀',dmg:40,exp:4.5,price:20000,desc:'To the moon'}
+  ];
+  const ITEMS=[
+    {id:'coffee',name:'Caffè',icon:'☕',price:120,desc:'x2 EXP per 25s',type:'boost',effect:'exp2',dur:25},
+    {id:'gold',name:"Guanti d'oro",icon:'🧤',price:150,desc:'x2 monete per 25s',type:'boost',effect:'coin2',dur:25},
+    {id:'adren',name:'Adrenalina',icon:'💉',price:180,desc:'La combo non scende per 20s',type:'boost',effect:'combolock',dur:20},
+    {id:'rage',name:'Furia',icon:'🔥',price:220,desc:'x2 danno per 20s',type:'boost',effect:'dmg2',dur:20},
+    {id:'energy',name:'Energy drink',icon:'🧃',price:90,desc:'+150 EXP subito',type:'instant',effect:'exp',val:150},
+    {id:'chest',name:'Forziere',icon:'🎁',price:300,desc:'Monete a sorpresa (100-800)',type:'instant',effect:'coins_rand'}
+  ];
+  const OBJECTIVES=[
+    {id:'p100',name:'Riscaldamento',desc:'Dai 100 pugni',goal:100,stat:'punches',rew:120},
+    {id:'p500',name:'Pugile',desc:'Dai 500 pugni',goal:500,stat:'punches',rew:400},
+    {id:'p2000',name:'Macchina da guerra',desc:'Dai 2000 pugni',goal:2000,stat:'punches',rew:1500},
+    {id:'c10',name:'Combo!',desc:'Raggiungi combo x10',goal:10,stat:'maxCombo',rew:200},
+    {id:'c25',name:'Inarrestabile',desc:'Combo x25',goal:25,stat:'maxCombo',rew:600},
+    {id:'l5',name:'In crescita',desc:'Arriva al livello 5',goal:5,stat:'level',rew:300},
+    {id:'l10',name:'Veterano',desc:'Livello 10',goal:10,stat:'level',rew:800},
+    {id:'l20',name:'Leggenda',desc:'Livello 20',goal:20,stat:'level',rew:2500},
+    {id:'j10',name:'Provocatore',desc:'Fai ingelosire Corrado 10 volte',goal:10,stat:'jealousy',rew:200},
+    {id:'h5',name:'Pace e amore',desc:'Abbraccia Corrado 5 volte',goal:5,stat:'hugs',rew:200},
+    {id:'w1',name:'Armato',desc:"Compra un'arma",goal:1,stat:'weaponsBought',rew:150},
+    {id:'rich',name:'Riccone',desc:'Guadagna 10000 monete totali',goal:10000,stat:'coinsEarned',rew:2000}
+  ];
+
+  const SAVE_KEY='corrado_rpg_v1';
+  let save={current:null,profiles:{}};
+  let profile=null;
+  const boosts={};
+  let saveT=null;
+  function loadSave(){ try{ const s=localStorage.getItem(SAVE_KEY); if(s) save=JSON.parse(s); }catch(e){} }
+  function persist(){ try{ localStorage.setItem(SAVE_KEY,JSON.stringify(save)); }catch(e){} }
+  function scheduleSave(){ clearTimeout(saveT); saveT=setTimeout(persist,800); }
+  function newProfile(name){ return {name:name,level:1,exp:0,coins:0,weapon:'fist',owned:['fist'],items:{},objs:{},
+    stats:{punches:0,maxCombo:1,jealousy:0,hugs:0,level:1,weaponsBought:0,coinsEarned:0}}; }
+  function expNeed(lv){ return Math.round(80*lv*Math.pow(1.18,lv-1)); }
+  function weaponOf(){ return WEAPONS.find(w=>w.id===(profile&&profile.weapon))||WEAPONS[0]; }
+  function boostOn(e){ return !!(boosts[e] && boosts[e]>Date.now()); }
+
+  function toast(title,sub){
+    const t=$('toast'); t.querySelector('.tt').textContent=title; t.querySelector('.ts').textContent=sub||'';
+    t.classList.remove('show'); void t.offsetWidth; t.classList.add('show');
+  }
+
+  function levelLoop(){
+    let need=expNeed(profile.level);
+    while(profile.exp>=need){
+      profile.exp-=need; profile.level++; profile.stats.level=profile.level;
+      const rew=profile.level*40; profile.coins+=rew; profile.stats.coinsEarned+=rew;
+      levelUpFx(profile.level,rew); need=expNeed(profile.level);
+    }
+  }
+  function levelUpFx(lv,rew){
+    toast('LIVELLO '+lv+'! 🎉','+'+rew+' 🪙'); if(typeof boing==='function') boing();
+    const r=stage.getBoundingClientRect();
+    for(let i=0;i<16;i++){
+      const s=document.createElement('div'); s.className='star';
+      s.textContent=['⭐','🎉','✨','🪙'][(Math.random()*4)|0];
+      s.style.left=(r.width*0.5)+'px'; s.style.top=(r.height*0.4)+'px';
+      const a=Math.random()*Math.PI*2,d=60+Math.random()*90;
+      s.style.setProperty('--dx',Math.cos(a)*d+'px'); s.style.setProperty('--dy',Math.sin(a)*d+'px');
+      s.style.setProperty('--r',(Math.random()*360)+'deg');
+      stage.appendChild(s); setTimeout(()=>s.remove(),650);
+    }
+  }
+  function checkObjs(){
+    OBJECTIVES.forEach(o=>{
+      if(profile.objs[o.id]) return;
+      if((profile.stats[o.stat]||0)>=o.goal){
+        profile.objs[o.id]=true; profile.coins+=o.rew; profile.stats.coinsEarned+=o.rew;
+        toast('Obiettivo: '+o.name+' ✅','+'+o.rew+' 🪙');
+      }
+    });
+  }
+  function dropLoot(){
+    const it=ITEMS[(Math.random()*ITEMS.length)|0];
+    profile.items[it.id]=(profile.items[it.id]||0)+1;
+    toast('Hai trovato un oggetto!',it.icon+' '+it.name);
+  }
+  function rpgPunch(x,y){
+    if(!profile) return;
+    const w=weaponOf();
+    const expG=Math.round(w.exp*combo*(boostOn('exp2')?2:1)*(boostOn('dmg2')?1.3:1));
+    const coinG=Math.round(w.dmg*combo*0.4*(boostOn('coin2')?2:1));
+    profile.exp+=expG; profile.coins+=coinG;
+    profile.stats.punches++; profile.stats.coinsEarned+=coinG;
+    if(combo>profile.stats.maxCombo) profile.stats.maxCombo=combo;
+    weaponFx(x,y,w); floatGain(x,y,expG,coinG);
+    levelLoop();
+    if(Math.random()<0.02) dropLoot();
+    checkObjs(); renderHUD(); scheduleSave();
+  }
+  function weaponFx(x,y,w){
+    if(x==null) return;
+    const sz=Math.max(34,Math.min(88,34+w.dmg*1.8));
+    const el=document.createElement('div'); el.className='swing';
+    el.style.left=x+'px'; el.style.top=y+'px';
+    el.innerHTML=
+      '<svg width="190" height="190" viewBox="0 0 200 200" style="overflow:visible">'+
+        '<line x1="196" y1="8" x2="122" y2="82" stroke="var(--skin)" stroke-width="22" stroke-linecap="round"/>'+
+        '<line x1="160" y1="44" x2="122" y2="82" stroke="var(--skin-sh)" stroke-width="22" stroke-linecap="round" opacity=".35"/>'+
+        '<circle cx="122" cy="82" r="19" fill="var(--skin)" stroke="var(--skin-sh)" stroke-width="3"/>'+
+        '<text x="100" y="114" font-size="'+sz+'" text-anchor="middle" dominant-baseline="middle">'+w.icon+'</text>'+
+      '</svg>';
+    stage.appendChild(el); setTimeout(()=>el.remove(),540);
+  }
+  function floatGain(x,y,exp,coin){
+    if(x==null) return;
+    const el=document.createElement('div'); el.className='gain';
+    el.innerHTML='<span class="ge">+'+exp+' EXP</span>'+(coin>0?'<span class="gc">+'+coin+' 🪙</span>':'');
+    el.style.left=x+'px'; el.style.top=(y-10)+'px';
+    stage.appendChild(el); setTimeout(()=>el.remove(),760);
+  }
+  function rpgEvent(type){
+    if(!profile) return;
+    if(type==='hug'){ profile.stats.hugs++; profile.coins+=20; profile.stats.coinsEarned+=20; }
+    if(type==='jealousy'){ profile.stats.jealousy++; }
+    checkObjs(); renderHUD(); scheduleSave();
+  }
+
+  function renderHUD(){
+    if(!profile) return;
+    $('pName').textContent=profile.name; $('pLevel').textContent=profile.level; $('pCoins').textContent=profile.coins;
+    const need=expNeed(profile.level);
+    $('expBar').style.width=Math.min(100,profile.exp/need*100)+'%';
+    $('expTxt').textContent=Math.floor(profile.exp)+' / '+need;
+    $('pWeapon').textContent=weaponOf().icon;
+    const bc=$('boostChips'); bc.innerHTML='';
+    [['exp2','☕ x2 EXP'],['coin2','🧤 x2 🪙'],['combolock','💉 Combo'],['dmg2','🔥 x2 dmg']].forEach(p=>{
+      if(boostOn(p[0])){ const s=document.createElement('span'); s.className='chip';
+        s.textContent=p[1]+' '+Math.ceil((boosts[p[0]]-Date.now())/1000)+'s'; bc.appendChild(s); }
+    });
+  }
+  function renderShop(){
+    if(!profile) return;
+    const wl=$('shopWeapons'); wl.innerHTML='';
+    WEAPONS.forEach(w=>{
+      const owned=profile.owned.includes(w.id), eq=profile.weapon===w.id;
+      const row=document.createElement('div'); row.className='shop-row';
+      row.innerHTML='<div class="si">'+w.icon+'</div><div class="sinfo"><b>'+w.name+'</b><small>'+w.desc+'</small><small>💥 danno '+w.dmg+' · ✨ exp x'+w.exp+'</small></div>';
+      const btn=document.createElement('button'); btn.className='ctrl';
+      if(eq){ btn.textContent='In uso'; btn.disabled=true; btn.classList.add('alt'); }
+      else if(owned){ btn.textContent='Equipaggia'; btn.onclick=()=>{ profile.weapon=w.id; persist(); renderShop(); renderHUD(); }; }
+      else { btn.textContent='🪙 '+w.price; btn.onclick=()=>buyWeapon(w); }
+      row.appendChild(btn); wl.appendChild(row);
+    });
+    const il=$('shopItems'); il.innerHTML='';
+    ITEMS.forEach(it=>{
+      const row=document.createElement('div'); row.className='shop-row';
+      row.innerHTML='<div class="si">'+it.icon+'</div><div class="sinfo"><b>'+it.name+'</b><small>'+it.desc+'</small></div>';
+      const btn=document.createElement('button'); btn.className='ctrl'; btn.textContent='🪙 '+it.price; btn.onclick=()=>buyItem(it);
+      row.appendChild(btn); il.appendChild(row);
+    });
+    $('shopCoins').textContent=profile.coins;
+  }
+  function buyWeapon(w){
+    if(profile.coins<w.price){ toast('Monete insufficienti 😅',''); return; }
+    profile.coins-=w.price; profile.owned.push(w.id); profile.weapon=w.id; profile.stats.weaponsBought++;
+    checkObjs(); persist(); renderShop(); renderHUD(); toast('Comprata: '+w.name,w.icon); if(typeof boing==='function') boing();
+  }
+  function buyItem(it){
+    if(profile.coins<it.price){ toast('Monete insufficienti 😅',''); return; }
+    profile.coins-=it.price; profile.items[it.id]=(profile.items[it.id]||0)+1;
+    persist(); renderShop(); renderHUD(); renderInv(); toast('Comprato: '+it.name,it.icon);
+  }
+  function renderInv(){
+    if(!profile) return;
+    const list=$('invList'); list.innerHTML='';
+    const keys=Object.keys(profile.items).filter(k=>profile.items[k]>0);
+    if(!keys.length){ list.innerHTML='<p style="opacity:.7;text-align:center;padding:10px">Zaino vuoto. Compra oggetti al Negozio! 🛒</p>'; return; }
+    keys.forEach(k=>{
+      const it=ITEMS.find(i=>i.id===k); if(!it) return;
+      const row=document.createElement('div'); row.className='shop-row';
+      row.innerHTML='<div class="si">'+it.icon+'</div><div class="sinfo"><b>'+it.name+' ×'+profile.items[k]+'</b><small>'+it.desc+'</small></div>';
+      const btn=document.createElement('button'); btn.className='ctrl'; btn.textContent='Usa'; btn.onclick=()=>useItem(it);
+      row.appendChild(btn); list.appendChild(row);
+    });
+  }
+  function useItem(it){
+    if((profile.items[it.id]||0)<=0) return;
+    profile.items[it.id]--;
+    if(it.type==='boost'){ boosts[it.effect]=Date.now()+it.dur*1000; toast('Attivato: '+it.name,it.icon); }
+    else if(it.effect==='exp'){ profile.exp+=it.val; toast('+'+it.val+' EXP',it.icon); levelLoop(); }
+    else if(it.effect==='coins_rand'){ const c=100+((Math.random()*700)|0); profile.coins+=c; profile.stats.coinsEarned+=c; toast('+'+c+' 🪙',it.icon); }
+    checkObjs(); persist(); renderInv(); renderHUD();
+  }
+  function renderObjs(){
+    if(!profile) return;
+    const list=$('objList'); list.innerHTML='';
+    OBJECTIVES.forEach(o=>{
+      const cur=Math.min(profile.stats[o.stat]||0,o.goal), done=!!profile.objs[o.id];
+      const row=document.createElement('div'); row.className='obj-row'+(done?' done':'');
+      row.innerHTML='<b>'+(done?'✅ ':'')+o.name+'</b><small>'+o.desc+'</small><div class="obar"><i style="width:'+(cur/o.goal*100)+'%"></i></div><small>'+cur+'/'+o.goal+' · 🪙 '+o.rew+'</small>';
+      list.appendChild(row);
+    });
+  }
+  function renderAll(){ renderHUD(); renderShop(); renderObjs(); renderInv(); renderSkills(); }
+
+  // ---- ABILITÀ (skill con cooldown, sbloccate per livello) ----
+  const cooldowns={};
+  function corradoCenter(){ const cr=corrado.getBoundingClientRect(); return {cx:cr.left+cr.width/2, cy:cr.top+cr.height*0.4}; }
+  function fakeHit(){ const c=corradoCenter(); punch({clientX:c.cx+(Math.random()*60-30), clientY:c.cy+(Math.random()*50-25)}); }
+  function flashScreen(){ stage.classList.remove('flash'); void stage.offsetWidth; stage.classList.add('flash'); }
+  function grant(exp,coins,label){
+    profile.exp+=exp; profile.coins+=coins; profile.stats.coinsEarned+=coins;
+    levelLoop(); checkObjs(); renderHUD(); scheduleSave();
+    const r=stage.getBoundingClientRect(); floatGain(r.width/2, r.height*0.42, exp, coins);
+    if(label) say(label);
+  }
+  function coinRain(){ const r=stage.getBoundingClientRect();
+    for(let i=0;i<14;i++){ const s=document.createElement('div'); s.className='star'; s.textContent='🪙';
+      s.style.left=(r.width*Math.random())+'px'; s.style.top='0px';
+      s.style.setProperty('--dx',(Math.random()*40-20)+'px'); s.style.setProperty('--dy',(r.height*0.7)+'px');
+      s.style.setProperty('--r',(Math.random()*360)+'deg'); stage.appendChild(s); setTimeout(()=>s.remove(),650); } }
+  const ABILITIES=[
+    {id:'mega',name:'Critico',icon:'💥',unlock:1,cd:8,desc:'Un colpo devastante',run:function(){
+      say('CRITICO! 💥'); flashScreen(); for(let i=0;i<3;i++) setTimeout(fakeHit,i*60);
+      grant(150+profile.level*30, 40+profile.level*8,''); }},
+    {id:'flurry',name:'Raffica',icon:'🌀',unlock:2,cd:12,desc:'10 colpi fulminei',run:function(){
+      say('RAFFICA! 🌀'); let n=0; const t=setInterval(()=>{ fakeHit(); if(++n>=10) clearInterval(t); },95); }},
+    {id:'rage',name:'Furia',icon:'🔥',unlock:4,cd:30,desc:'x2 danno+EXP per 10s',run:function(){
+      boosts.dmg2=Date.now()+10000; boosts.exp2=Date.now()+10000; say('FURIA! 🔥'); renderHUD(); }},
+    {id:'gold',name:'Oro',icon:'🤑',unlock:6,cd:30,desc:'Pioggia di monete',run:function(){
+      boosts.coin2=Date.now()+12000; coinRain(); grant(0,200+profile.level*40,"PIOGGIA D'ORO! 🪙"); }},
+    {id:'quake',name:'Sisma',icon:'🌋',unlock:8,cd:20,desc:'Colpo sismico ad area',run:function(){
+      say('TERREMOTO! 🌋');
+      for(let i=0;i<4;i++) setTimeout(()=>{ stage.classList.remove('shake'); void stage.offsetWidth; stage.classList.add('shake'); fakeHit(); }, i*120);
+      grant(120+profile.level*25, 30+profile.level*6,''); }}
+  ];
+  function useSkill(a){
+    if(!profile) return;
+    if(profile.level<a.unlock){ toast(a.name+' 🔒','Si sblocca al livello '+a.unlock); return; }
+    if(cooldowns[a.id] && cooldowns[a.id]>Date.now()) return;
+    cooldowns[a.id]=Date.now()+a.cd*1000; a.run(); renderSkills();
+  }
+  function renderSkills(){
+    if(!profile){ if($('skills')) $('skills').innerHTML=''; return; }
+    const box=$('skills'); box.innerHTML='';
+    ABILITIES.forEach(a=>{
+      const locked=profile.level<a.unlock;
+      const cdLeft=cooldowns[a.id]?Math.max(0,cooldowns[a.id]-Date.now()):0;
+      const b=document.createElement('div'); b.className='skill'+(locked?' locked':(cdLeft<=0?' ready':''));
+      b.title=a.name+' — '+a.desc;
+      let h='<div class="ic">'+a.icon+'</div><div class="nm">'+a.name+'</div>';
+      if(locked) h+='<div class="lock">🔒<i>Lv'+a.unlock+'</i></div>';
+      else if(cdLeft>0) h+='<div class="cd" style="height:'+(cdLeft/(a.cd*1000)*100)+'%">'+Math.ceil(cdLeft/1000)+'</div>';
+      b.innerHTML=h;
+      if(!locked && cdLeft<=0) b.onclick=()=>useSkill(a);
+      box.appendChild(b);
+    });
+  }
+  setInterval(()=>{ if(profile) renderSkills(); },300);
+
+  function login(name){
+    name=(name||'').trim().slice(0,16)||'Player';
+    if(!save.profiles[name]) save.profiles[name]=newProfile(name);
+    save.current=name; profile=save.profiles[name];
+    // compat: assicura i campi
+    profile.stats=Object.assign({punches:0,maxCombo:1,jealousy:0,hugs:0,level:profile.level||1,weaponsBought:0,coinsEarned:0},profile.stats||{});
+    persist(); $('loginOverlay').classList.remove('open'); renderAll();
+    toast('Benvenuto, '+name+'! 👊','');
+  }
+  function logout(){ save.current=null; persist(); profile=null; for(const k in boosts) delete boosts[k];
+    $('nameInput').value=''; $('loginOverlay').classList.add('open'); }
+
+  // ---- wiring RPG ----
+  loadSave();
+  $('loginBtn').addEventListener('click',()=>login($('nameInput').value));
+  $('nameInput').addEventListener('keydown',e=>{ if(e.key==='Enter') login($('nameInput').value); });
+  $('shopBtn').addEventListener('click',()=>{ renderShop(); $('shopModal').classList.add('open'); });
+  $('objBtn').addEventListener('click',()=>{ renderObjs(); $('objModal').classList.add('open'); });
+  $('invBtn').addEventListener('click',()=>{ renderInv(); $('invModal').classList.add('open'); });
+  $('logoutBtn').addEventListener('click',logout);
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{ const m=b.closest('.sheet'); if(m) m.classList.remove('open'); }));
+  document.querySelectorAll('.sheet').forEach(s=>s.addEventListener('click',e=>{ if(e.target===s) s.classList.remove('open'); }));
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); t.classList.add('on');
+    const w=t.dataset.tab==='w'; $('tabW').classList.toggle('hidden',!w); $('tabI').classList.toggle('hidden',w);
+  }));
+  setInterval(()=>{ if(profile) renderHUD(); },1000);
+  // riprendi sessione o mostra login
+  if(save.current && save.profiles[save.current]){ login(save.current); } else { $('loginOverlay').classList.add('open'); }
 
   // ---- eventi ----
   corrado.addEventListener('pointerdown',e=>{e.preventDefault();punch(e);});
